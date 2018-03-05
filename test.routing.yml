@@ -1,0 +1,7 @@
+test.content:
+  path: '/test'
+  defaults: 
+    _controller: '\Drupal\test\Controller\testController::test'
+    _title: 'Super Man'
+  requirements:
+    _permission: 'access content'  
