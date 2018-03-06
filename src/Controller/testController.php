@@ -13,28 +13,26 @@ class testController extends ControllerBase {
 
    public function test() {
      $select = $this -> load();
-     var_dump($select);
      foreach($select as $entry){
       $rows[] = array_map('Drupal\Component\Utility\SafeMarkup::checkPlain', (array) $entry);
+    }
 
-
-     }
      return $array = array(
        '#type' => 'table',
        '#header' => [t('uid'),t('uuid'),t('langcode')],
-       '#row' => $rows,
+       '#rows' => $rows,
        '#empty' => t('No entries available')
     
      );
-     return $array = array(
-       '#type' => 'markup',
-       '#markup' => $rows
+    //  return $array = array(
+    //    '#type' => 'markup',
+    //    '#markup' => $rows
 
-     );
+    //  );
     }
    public function load(){
     $database = \Drupal::database(); 
-   $query = $database->query("SELECT * FROM users");
+    $query = $database->query("SELECT * FROM users");
     $result = $query->fetchAll();
     return $result;
    } 
